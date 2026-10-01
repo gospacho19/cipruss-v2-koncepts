@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Cipruss ziedi un augi — ziedu bāze Teikā</title>
+<meta name="description" content="Dizaina priekšlikums (koncepts) ziedu bāzei Cipruss, Kuršu iela 3, Rīga. Nav oficiālā lapa.">
+<meta name="theme-color" content="#f6f3ed">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@600;700;800&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Chrome draws Wix Madefor's capital macrons (Ē Ā Ī Ū) beside the letter, so "Ērti" reads "Erti";
+   these four glyphs alone come from a system sans */
+@font-face{font-family:"Caps Macron";font-weight:100 900;unicode-range:U+0100,U+0112,U+012A,U+016A;
+  src:local("Helvetica Neue Medium"),local("HelveticaNeue-Medium"),local("Roboto Medium"),local("Roboto-Medium"),local("Arial"),local("ArialMT")}
+:root{
+  --paper:#f6f3ed; --paper2:#ece6da; --card:#fcfbf8;
+  --ink:#161513; --ink2:#46423b; --mute:#827b70; --line:#dcd4c4;
+  --yellow:#f0b81c; --yellow2:#e3a90d; --open:#2e8a4d; --shut:#b8472f;
+  --gut:20px; --max:1240px;
+  --disp:"Caps Macron","Wix Madefor Display",system-ui,sans-serif;
+  --text:"Caps Macron","Wix Madefor Text",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+[data-lang][hidden]{display:none!important}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.nw{white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* concept notice */
+.notice{background:var(--ink);color:#d9d3c7;font:400 12.5px/1.35 var(--text);text-align:center;padding:7px var(--gut);text-wrap:balance}
+.notice b{color:#fff;font-weight:600}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:baseline;gap:9px;text-decoration:none}
+.brand b{font:800 23px/1 var(--disp);letter-spacing:-.02em}
+.brand span{font:500 13px/1 var(--text);color:var(--mute)}
+.nav{display:none}
+.langs{display:flex;gap:2px}
+.langs button{background:none;border:0;cursor:pointer;font:600 13px/1 var(--text);letter-spacing:.04em;color:var(--mute);padding:10px 8px}
+.langs button[aria-pressed="true"]{color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--yellow)}
+
+/* type */
+.kicker{display:flex;align-items:center;gap:10px;font:600 15px/1.2 var(--text);letter-spacing:0;color:var(--ink2)}
+.kicker::before{content:"";width:9px;height:9px;background:var(--yellow);flex:none}
+h1,h2{font-family:var(--disp);font-weight:800;letter-spacing:-.028em;color:var(--ink)}
+h1{font-size:44px;line-height:1}
+h2{font-size:34px;line-height:1.04}
+.lead{font-size:18.5px;line-height:1.5;color:var(--ink2)}
+p+p{margin-top:.8em}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:2px;font:600 16px/1 var(--text);text-decoration:none;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:var(--yellow2)}
+.btn-o{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-o:hover{background:var(--ink);color:var(--paper)}
+
+/* status */
+.status{display:flex;align-items:flex-start;gap:10px;font:500 15px/1.4 var(--text);color:var(--ink)}
+.status .dot{width:9px;height:9px;border-radius:50%;background:var(--mute);flex:none;margin-top:.42em}
+.status.is-open .dot{background:var(--open);box-shadow:0 0 0 4px rgba(46,138,77,.14)}
+.status.is-shut .dot{background:var(--shut)}
+.status .where{color:var(--mute);white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero{position:relative}
+.hero-img{display:block}
+.hero-img img{width:100%;aspect-ratio:20/21;object-fit:cover;object-position:50% 40%}
+.hero-card{padding:22px var(--gut) 0}
+.hero-card .status{margin-bottom:14px}
+.hero-card h1{margin-bottom:14px}
+.hero-card .lead{font-size:18px}
+.hero-cta{display:none}
+
+/* ---------- sections ---------- */
+section.block{padding-top:84px}
+.head{margin-bottom:28px}
+.head .kicker{margin-bottom:16px}
+.head h2{margin-bottom:14px}
+.head p{color:var(--ink2);max-width:36em}
+.head a{text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:3px;white-space:nowrap}
+
+/* hall gallery */
+.gal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 10px;margin:0 calc(-1 * var(--gut))}
+.gal figure{min-width:0}
+.gal img{width:100%;object-fit:cover;background:var(--paper2)}
+.gal .g-eu{grid-column:1/-1}
+.gal .g-eu img{aspect-ratio:4/5}
+.gal .g-kr img,.gal .g-ho img{aspect-ratio:3/4}
+.gal .g-tu{grid-column:1/-1}
+.gal .g-tu img{aspect-ratio:16/9}
+.gal .g-ro{display:none}
+.gal figcaption{padding:10px var(--gut) 0;font-size:15px;line-height:1.35;color:var(--mute)}
+.gal figcaption b{display:block;font:700 17px/1.25 var(--disp);color:var(--ink);letter-spacing:-.01em}
+.gal .g-kr figcaption{padding-right:0}
+.gal .g-ho figcaption{padding-left:0}
+
+/* origins */
+.origin-names{list-style:none;margin:6px 0 22px}
+.origin-names li{font:800 40px/1.06 var(--disp);letter-spacing:-.03em}
+.origin p{color:var(--ink2)}
+.origin-photo{margin:34px calc(-1 * var(--gut)) 0}
+.origin-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 30%}
+.quote{margin-top:30px}
+.quote blockquote{font:600 23px/1.34 var(--disp);letter-spacing:-.012em;color:var(--ink)}
+.quote figcaption{margin-top:14px;font-size:14.5px;color:var(--mute)}
+
+/* services */
+.svc-groups{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.svc h3{font:600 15px/1.2 var(--text);color:var(--mute);margin-bottom:12px}
+.svc ul{list-style:none}
+.svc li{font:700 17.5px/1.2 var(--disp);letter-spacing:-.012em;padding:5px 0}
+.svc-note{margin-top:26px;color:var(--ink2)}
+.svc-note a{font-weight:600;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:3px}
+.svc-photo{margin:36px calc(-1 * var(--gut)) 0}
+.svc-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.svc-photo figcaption{padding:10px var(--gut) 0;font-size:14.5px;color:var(--mute)}
+
+/* reviews */
+.rating{display:flex;align-items:flex-end;gap:14px;margin:4px 0 30px}
+.rating strong{font:800 64px/.9 var(--disp);letter-spacing:-.04em}
+.rating span{font-size:15px;line-height:1.35;color:var(--ink2);padding-bottom:3px}
+.rating .stars{display:block;width:max-content;position:relative;color:rgba(22,21,19,.16);letter-spacing:2px;font-size:15px;line-height:1.3;white-space:nowrap}
+.rating .stars::after{content:"★★★★★";position:absolute;left:0;top:0;width:92%;overflow:hidden;color:var(--yellow2)}
+.revs{display:grid;gap:26px}
+.rev blockquote{font:600 18.5px/1.42 var(--text);letter-spacing:-.005em}
+.rev.big blockquote{font-size:24px;line-height:1.3;letter-spacing:-.012em}
+.rev figcaption{margin-top:10px;font-size:14.5px;color:var(--mute)}
+.rev + .rev{padding-top:26px;border-top:1px solid var(--line)}
+
+/* order */
+.order{background:var(--paper2);margin-top:88px;padding:76px 0 0}
+.form{background:var(--card);padding:24px var(--gut) 26px;margin:0 calc(-1 * var(--gut))}
+.field{margin-bottom:22px}
+.field label,.field .lab{display:block;font:600 14.5px/1.3 var(--text);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:transparent;border:1.5px solid var(--line);border-radius:2px;padding:10px 13px;font:500 15px/1.2 var(--text);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+input,textarea{width:100%;background:var(--paper);border:1.5px solid transparent;border-bottom-color:var(--line);border-radius:2px;padding:13px 12px;font-size:16px;line-height:1.35;outline:none}
+input:focus,textarea:focus{border-color:var(--ink)}
+textarea{min-height:92px;resize:vertical}
+.hint{font-size:14px;color:var(--shut);margin-top:8px}
+.preview{background:var(--paper);border-left:3px solid var(--yellow);padding:14px 16px;margin:4px 0 20px;white-space:pre-line;font-size:15px;line-height:1.5;color:var(--ink2)}
+.preview-lab{font:600 14px/1 var(--text);color:var(--mute);margin-bottom:10px}
+.form-actions{display:flex;flex-wrap:wrap;gap:10px}
+.form-actions .btn{flex:1 1 auto}
+.form-foot{margin-top:14px;font-size:14px;color:var(--mute)}
+
+/* visit */
+.visit{background:var(--yellow);padding:76px 0 0}
+.visit .kicker::before{background:var(--ink)}
+.visit h2{font-size:46px;line-height:.98;margin:16px 0 8px}
+.visit .addr-sub{font-size:17px;color:var(--ink);margin-bottom:22px}
+.visit .status{margin-bottom:26px}
+.visit .status .where{display:none}
+.visit .status.is-open .dot{box-shadow:0 0 0 4px rgba(22,21,19,.1)}
+.hours{list-style:none;margin-bottom:26px}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(22,21,19,.16);font-size:16.5px}
+.hours li:first-child{border-top:1px solid rgba(22,21,19,.16)}
+.hours li.today{font-weight:600}
+.hours li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.facts{list-style:none;margin-bottom:26px}
+.facts li{padding:3px 0 3px 26px;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.72em;width:12px;height:2px;background:var(--ink)}
+.contacts{margin-bottom:24px;font-size:16.5px;line-height:1.7}
+.contacts a{text-decoration:none;border-bottom:1.5px solid rgba(22,21,19,.35)}
+.contacts .main{font:800 30px/1.1 var(--disp);letter-spacing:-.02em;border:0;display:inline-block;margin-bottom:4px}
+.visit-actions{display:flex;flex-wrap:wrap;gap:10px}
+.visit .btn-o:hover{background:var(--ink);color:var(--yellow)}
+.btn-k{background:var(--ink);color:var(--yellow)}
+.btn-k:hover{background:#000}
+.visit-photo{margin:44px calc(-1 * var(--gut)) 0}
+.visit-photo img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.visit-photo figcaption{background:var(--ink);color:#bdb6a9;font-size:13.5px;padding:10px var(--gut)}
+
+/* footer */
+footer{background:var(--ink);color:#bdb6a9;padding:44px 0 120px;font-size:14.5px;line-height:1.6}
+footer .fbrand{font:800 22px/1 var(--disp);color:#fff;letter-spacing:-.02em;margin-bottom:12px}
+footer p{max-width:44em}
+footer p+p{margin-top:12px}
+footer a{color:#e8e2d6}
+
+/* phone action bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(22,21,19,.96)}
+.bar .btn{min-height:50px;flex:1 1 0;padding:0 12px}
+.bar .btn-y{flex:1.45 1 0}
+.bar .btn-o{border-color:rgba(255,255,255,.5);color:#fff}
+
+/* ---------- wider ---------- */
+@media (max-width:599px){
+  html[lang="ru"] .hero-card h1{font-size:37px;line-height:1.02}
+}
+@media (min-width:600px){
+  :root{--gut:32px}
+  h1{font-size:60px}
+  h2{font-size:44px}
+  .gal{margin:0;gap:36px 16px}
+  .gal figcaption{padding:12px 0 0!important}
+  .origin-photo,.svc-photo,.visit-photo{margin-left:0;margin-right:0}
+  .svc-photo figcaption{padding-left:0}
+  .form{margin:0;padding:32px}
+  .order{padding-bottom:84px}
+  .svc-groups{gap:30px}
+  .svc li{font-size:22px;line-height:1.28;padding:3px 0}
+}
+@media (min-width:861px){
+  :root{--gut:40px}
+  body{font-size:17.5px}
+  .bar{display:none}
+  footer{padding-bottom:48px}
+  .top{height:84px}
+  .brand b{font-size:27px}
+  .nav{display:flex;gap:30px;margin-left:auto;margin-right:34px}
+  .nav a{text-decoration:none;font:500 15.5px/1 var(--text);color:var(--ink2)}
+  .nav a:hover{color:var(--ink)}
+  .nav a.tel{font-weight:600;color:var(--ink)}
+  /* hero: text left, photo bleeding to the right edge */
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center}
+  .hero-img{grid-column:2;grid-row:1;align-self:stretch}
+  .hero-img img{aspect-ratio:auto;height:min(calc(100vh - 124px),800px);min-height:600px;object-position:50% 50%}
+  .hero-card{grid-column:1;grid-row:1;padding:40px 64px 56px max(var(--gut),calc((100vw - var(--max)) / 2 + var(--gut)))}
+  .hero-card .status{margin-bottom:26px}
+  .hero-card h1{font-size:clamp(64px,6.2vw,92px);line-height:.95;margin-bottom:26px}
+  .hero-card .lead{font-size:20px;max-width:24em}
+  html[lang="ru"] .hero-card h1{font-size:clamp(50px,4.5vw,66px);line-height:.98}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  section.block{padding-top:128px}
+  h2{font-size:clamp(46px,4.4vw,62px);line-height:1}
+  .head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end;margin-bottom:44px}
+  .head .kicker{grid-column:1/-1}
+  .head h2{grid-column:1/7;margin:0}
+  .head p{grid-column:8/13}
+  /* gallery */
+  .gal{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 24px}
+  .gal .g-eu,.gal .g-kr,.gal .g-ho{grid-column:auto}
+  .gal .g-eu img,.gal .g-kr img,.gal .g-ho img{aspect-ratio:4/5}
+  .gal .g-tu{grid-column:span 2}
+  .gal .g-ro{display:block}
+  .gal .g-tu img,.gal .g-ro img{aspect-ratio:auto;height:clamp(360px,31vw,450px)}
+  .gal .g-ro img{object-position:50% 40%}
+  /* origins */
+  .origin{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start}
+  .origin-text{grid-column:1/7;padding-top:8px}
+  .origin-names li{font-size:clamp(52px,5vw,72px)}
+  .origin-text p{max-width:30em;font-size:19px}
+  .origin-photo{grid-column:8/13;grid-row:1/3;margin:0}
+  .origin-photo img{aspect-ratio:1/1}
+  .quote{grid-column:1/7;margin-top:48px;max-width:34em}
+  .quote blockquote{font-size:26px}
+  /* services */
+  .svc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start}
+  .svc .head{grid-column:1/13;display:block;margin-bottom:40px}
+  .svc .head h2{max-width:9em;margin-bottom:0}
+  .svc-body{grid-column:1/8}
+  .svc li{font-size:26px}
+  html[lang="ru"] .svc li{font-size:21px}
+  .svc-photo{grid-column:8/13;margin:0}
+  /* reviews */
+  .reviews-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .reviews-grid .head{grid-column:1/5;display:block;position:sticky;top:40px;align-self:start}
+  .reviews-grid .rating{flex-direction:column;align-items:flex-start;gap:14px;margin:0}
+  .reviews-grid .rating strong{font-size:128px;line-height:.8}
+  .reviews-grid .rating span{font-size:16px}
+  .reviews-grid .rating .stars{font-size:19px}
+  .revs{grid-column:6/13;gap:34px}
+  .rev.big blockquote{font-size:30px}
+  .rev + .rev{padding-top:34px}
+  /* order */
+  .order{margin-top:128px;padding:112px 0 120px}
+  .order-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start}
+  .order-grid .head{grid-column:1/6;display:block;position:sticky;top:40px}
+  .order-grid .head h2{margin-bottom:18px}
+  .form{grid-column:7/13;padding:40px}
+  /* visit */
+  .visit{padding:104px 0 104px}
+  .visit-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start}
+  .visit-info{grid-column:1/6}
+  .visit h2{font-size:clamp(56px,5.4vw,78px)}
+  .visit-photo{grid-column:7/13;margin:0}
+  footer .wrap{display:grid;grid-template-columns:1fr 2fr;gap:40px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="notice"><b>Nikita:</b> <span data-lang="lv">Dizaina priekšlikums, nav Cipruss oficiālā lapa.</span><span data-lang="ru" hidden>Дизайн-предложение, не официальный сайт Cipruss.</span></div>
+
+<header class="top wrap">
+  <a class="brand" href="#"><b>Cipruss</b><span>ziedi un augi</span></a>
+  <nav class="nav" aria-label="Sadaļas">
+    <a href="#zale"><span data-lang="lv">Zālē</span><span data-lang="ru" hidden>В зале</span></a>
+    <a href="#pakalpojumi"><span data-lang="lv">Pakalpojumi</span><span data-lang="ru" hidden>Услуги</span></a>
+    <a href="#pasutit"><span data-lang="lv">Pasūtīt</span><span data-lang="ru" hidden>Заказ</span></a>
+    <a href="#kontakti"><span data-lang="lv">Kā atrast</span><span data-lang="ru" hidden>Как найти</span></a>
+    <a class="tel" href="tel:+37167543897">67 543 897</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Valoda / Язык">
+    <button type="button" data-set-lang="lv" aria-pressed="true">LV</button>
+    <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <picture class="hero-img">
+    <source media="(max-width:860px)" srcset="img/hero-m.jpg">
+    <img src="img/hero.jpg" width="1500" height="1438" alt="Cipruss zāle: ziedi kastēs un spaiņos — gladiolas, dzeltenas gerberas un citi">
+  </picture>
+  <div class="hero-card">
+    <p class="status js-status"><i class="dot"></i><span><span class="js-status-text"><span data-lang="lv">Pirmdien–piektdien 8:00–18:00</span><span data-lang="ru" hidden>Пн–пт 8:00–18:00</span></span><span class="where">, Kuršu iela&nbsp;3</span></span></p>
+    <h1><span data-lang="lv">Svaigi ziedi divreiz nedēļā</span><span data-lang="ru" hidden>Свежие цветы дважды в&nbsp;неделю</span></h1>
+    <p class="lead"><span data-lang="lv">Ziedu un augu bāze Teikā — vairumā un mazumā. Ģimenes uzņēmums kopš 1999.&nbsp;gada.</span><span data-lang="ru" hidden>Цветочная база в&nbsp;Тейке — оптом и&nbsp;в&nbsp;розницу. Семейная фирма с&nbsp;1999&nbsp;года.</span></p>
+    <div class="hero-cta">
+      <a class="btn btn-y" href="tel:+37167543897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><span data-lang="lv">Zvanīt</span><span data-lang="ru" hidden>Звонить</span> 67 543 897</span></a>
+      <a class="btn btn-o" href="#pasutit"><span data-lang="lv">Pasūtīt ziedus</span><span data-lang="ru" hidden>Заказать цветы</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- the hall -->
+<section class="block wrap" id="zale">
+  <div class="head">
+    <h2><span data-lang="lv">Grieztie ziedi un podu&nbsp;augi</span><span data-lang="ru" hidden>Срезанные цветы и растения в&nbsp;горшках</span></h2>
+    <p><span data-lang="lv">Fotogrāfijas — no mūsu zāles. Kas pieejams šonedēļ, jautājiet pa tālruni <a href="tel:+37167543897">67 543 897</a>.</span><span data-lang="ru" hidden>Фотографии — из нашего зала. Что есть на этой неделе, спросите по телефону <a href="tel:+37167543897">67 543 897</a>.</span></p>
+  </div>
+  <div class="gal">
+    <figure class="g-eu">
+      <img src="img/eustomas.jpg" width="1080" height="1351" loading="lazy" alt="Violetas un baltas eustomas">
+      <figcaption><b><span data-lang="lv">Eustomas</span><span data-lang="ru" hidden>Эустомы</span></b><span data-lang="lv">violetas un baltas</span><span data-lang="ru" hidden>фиолетовые и белые</span></figcaption>
+    </figure>
+    <figure class="g-kr">
+      <img src="img/krumrozes.jpg" width="720" height="960" loading="lazy" alt="Divkrāsu rozā krūmrozes">
+      <figcaption><b><span data-lang="lv">Krūmrozes</span><span data-lang="ru" hidden>Кустовые розы</span></b><span data-lang="lv">rozā, divkrāsu</span><span data-lang="ru" hidden>розовые, двухцветные</span></figcaption>
+    </figure>
+    <figure class="g-ho">
+      <img src="img/hortenzijas.jpg" width="720" height="960" loading="lazy" alt="Zilas un violetas hortenzijas">
+      <figcaption><b><span data-lang="lv">Hortenzijas</span><span data-lang="ru" hidden>Гортензии</span></b><span data-lang="lv">zilas, violetas</span><span data-lang="ru" hidden>голубые, фиолетовые</span></figcaption>
+    </figure>
+    <figure class="g-tu">
+      <img src="img/tulpes.jpg" width="960" height="541" loading="lazy" alt="Rozā tulpes">
+      <figcaption><b><span data-lang="lv">Tulpes</span><span data-lang="ru" hidden>Тюльпаны</span></b><span data-lang="lv">rozā</span><span data-lang="ru" hidden>розовые</span></figcaption>
+    </figure>
+    <figure class="g-ro">
+      <img src="img/rozes.jpg" width="960" height="880" loading="lazy" alt="Krēmkrāsas krūmrozes">
+      <figcaption><b><span data-lang="lv">Krūmrozes</span><span data-lang="ru" hidden>Кустовые розы</span></b><span data-lang="lv">krēmkrāsas</span><span data-lang="ru" hidden>кремовые</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- where the flowers come from -->
+<section class="block wrap">
+  <div class="origin">
+    <div class="origin-text">
+      <p class="kicker"><span data-lang="lv">No kurienes</span><span data-lang="ru" hidden>Откуда</span></p>
+      <ul class="origin-names" data-lang="lv">
+        <li>Nīderlande</li><li>Kenija</li><li>Etiopija</li><li>Latīņamerika</li>
+      </ul>
+      <ul class="origin-names" data-lang="ru" hidden>
+        <li>Нидерланды</li><li>Кения</li><li>Эфиопия</li><li>Латинская Америка</li>
+      </ul>
+      <p><span data-lang="lv">Mūsu ziedi nāk no šo un citu zemju audzētavām. Divreiz nedēļā ziedi un augi pienāk mūsu noliktavas veikalā Kuršu ielā — un var arī pasūtīt tieši tādus, kādus vēlaties.</span><span data-lang="ru" hidden>Наши цветы приходят с плантаций этих и других стран. Дважды в неделю цветы и растения привозят на наш склад-магазин на улице Куршу — а можно и заказать именно те, которые вам нужны.</span></p>
+    </div>
+    <figure class="origin-photo">
+      <img src="img/plaukti.jpg" width="1125" height="1125" loading="lazy" alt="Metāla plaukti ar ziedu kastēm, gladiolas labajā malā">
+    </figure>
+    <figure class="quote">
+      <blockquote><span data-lang="lv">„Zinoši pārdevēji palīdzēs izvēlēties labākos ziedus un ieteiks kā labāk tos uzglabāt vai kopt, lai tie saglabātos skaisti pēc iespējas ilgāk.”</span><span data-lang="ru" hidden>«Знающие продавцы помогут выбрать лучшие цветы и подскажут, как их лучше хранить и за ними ухаживать, чтобы они как можно дольше оставались красивыми.»</span></blockquote>
+      <figcaption>Mārtiņš R., Google<span data-lang="ru" hidden>, перевод</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- services -->
+<section class="block wrap" id="pakalpojumi">
+  <div class="svc">
+    <div class="head">
+      <h2><span data-lang="lv">Uz vietas un pēc pasūtījuma</span><span data-lang="ru" hidden>На месте и под&nbsp;заказ</span></h2>
+    </div>
+    <div class="svc-body">
+      <div class="svc-groups">
+        <div>
+          <h3><span data-lang="lv">Bāzē</span><span data-lang="ru" hidden>На базе</span></h3>
+          <ul data-lang="lv"><li>Grieztie ziedi</li><li>Podu augi</li><li>Mākslīgie ziedi</li><li>Podi un grozi</li></ul>
+          <ul data-lang="ru" hidden><li>Срезанные цветы</li><li>Растения в горшках</li><li>Искусственные цветы</li><li>Горшки и корзины</li></ul>
+        </div>
+        <div>
+          <h3><span data-lang="lv">Pēc pasūtījuma</span><span data-lang="ru" hidden>Под заказ</span></h3>
+          <ul data-lang="lv"><li>Kāzu pušķi</li><li>Sēru vainagi</li><li>Telpu noformēšana</li><li>Auto noformēšana</li><li>Floristu pakalpojumi</li></ul>
+          <ul data-lang="ru" hidden><li>Свадебные букеты</li><li>Траурные венки</li><li>Оформление помещений</li><li>Оформление автомобилей</li><li>Услуги флориста</li></ul>
+        </div>
+      </div>
+      <p class="svc-note"><span data-lang="lv">Individuālus pasūtījumus pieņemam no uzņēmumiem, organizācijām un privātpersonām. <a href="#pasutit">Aprakstīt pasūtījumu</a></span><span data-lang="ru" hidden>Индивидуальные заказы принимаем от фирм, организаций и частных лиц. <a href="#pasutit">Описать заказ</a></span></p>
+    </div>
+    <figure class="svc-photo">
+      <img src="img/podi.jpg" width="1080" height="810" loading="lazy" alt="Keramikas podi — rozā, pelēki un sinepju krāsas — un pīts grozs">
+      <figcaption><span data-lang="lv">Podi, grozi un keramika</span><span data-lang="ru" hidden>Горшки, корзины и керамика</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- reviews -->
+<section class="block wrap">
+  <div class="reviews-grid">
+    <div class="head">
+      <h2 class="sr"><span data-lang="lv">Atsauksmes</span><span data-lang="ru" hidden>Отзывы</span></h2>
+      <div class="rating">
+        <strong>4,6</strong>
+        <span><span class="stars" aria-hidden="true">★★★★★</span><span data-lang="lv">no 5, 90 atsauksmes Google</span><span data-lang="ru" hidden>из 5, 90 отзывов в Google</span></span>
+      </div>
+    </div>
+    <div class="revs">
+      <figure class="rev big">
+        <blockquote><span data-lang="lv">„Izcils serviss. Vienmēr atrod un iesaka piemērotākos ziedus.”</span><span data-lang="ru" hidden>«Отличный сервис. Всегда найдут и посоветуют самые подходящие цветы.»</span></blockquote>
+        <figcaption>Anrijs Z., Google<span data-lang="ru" hidden>, перевод</span></figcaption>
+      </figure>
+      <figure class="rev">
+        <blockquote><span data-lang="lv">„Super svaigi ziedi par ļoti labam cenām. Ērti piebraukt ar mašīnu un bez maksas nolikt pie pašām durvīm”</span><span data-lang="ru" hidden>«Суперсвежие цветы по очень хорошим ценам. Удобно подъехать на машине и бесплатно оставить её прямо у дверей»</span></blockquote>
+        <figcaption>Linda R., Google<span data-lang="ru" hidden>, перевод</span></figcaption>
+      </figure>
+      <figure class="rev">
+        <blockquote><span data-lang="lv">„Ļoti labi ziedi, var norēķināties gan ar karti, gan ar skaidru, liels paldies”</span><span data-lang="ru" hidden>«Очень хорошие цветы, можно расплатиться и картой, и наличными, большое спасибо»</span></blockquote>
+        <figcaption>Arthur T., Google<span data-lang="ru" hidden>, перевод</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- order -->
+<section class="order" id="pasutit">
+  <div class="wrap order-grid">
+    <div class="head">
+      <h2><span data-lang="lv">Pasūtiet sev vēlamos ziedus</span><span data-lang="ru" hidden>Закажите цветы, которые вам нужны</span></h2>
+      <p><span data-lang="lv">Atzīmējiet, kas vajadzīgs un kad. Jūsu <span class="nw">e-pasta</span> programmā atvērsies gatava vēstule uz cipruss.ziedi@gmail.com — atliks tikai to nosūtīt. Steidzami? Zvaniet <a href="tel:+37167543897">67 543 897</a>.</span><span data-lang="ru" hidden>Отметьте, что нужно и когда. Письмо откроется в вашей почте уже с адресом cipruss.ziedi@gmail.com — останется только его отправить. Срочно? Звоните <a href="tel:+37167543897">67 543 897</a>.</span></p>
+    </div>
+    <form class="form" id="order" novalidate>
+      <div class="field">
+        <span class="lab"><span data-lang="lv">Kas vajadzīgs?</span><span data-lang="ru" hidden>Что нужно?</span></span>
+        <div class="chips" id="chips">
+          <button type="button" class="chip" aria-pressed="false" data-lv="grieztie ziedi" data-ru="срезанные цветы"><span data-lang="lv">Grieztie ziedi</span><span data-lang="ru" hidden>Срезанные цветы</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-lv="pušķis" data-ru="букет"><span data-lang="lv">Pušķis</span><span data-lang="ru" hidden>Букет</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-lv="kāzu pušķis" data-ru="свадебный букет"><span data-lang="lv">Kāzu pušķis</span><span data-lang="ru" hidden>Свадебный букет</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-lv="sēru vainags" data-ru="траурный венок"><span data-lang="lv">Sēru vainags</span><span data-lang="ru" hidden>Траурный венок</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-lv="podu augi" data-ru="растения в горшках"><span data-lang="lv">Podu augi</span><span data-lang="ru" hidden>Растения в горшках</span></button>
+          <button type="button" class="chip" aria-pressed="false" data-lv="telpu vai auto noformējums" data-ru="оформление помещения или авто"><span data-lang="lv">Noformējums</span><span data-lang="ru" hidden>Оформление</span></button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-date"><span data-lang="lv">Kad vajag?</span><span data-lang="ru" hidden>Когда нужно?</span></label>
+        <input id="f-date" type="date">
+        <p class="hint" id="sun-hint" hidden><span data-lang="lv">Svētdienās bāze ir slēgta — izvēlieties citu dienu.</span><span data-lang="ru" hidden>По воскресеньям база закрыта — выберите другой день.</span></p>
+      </div>
+      <div class="field">
+        <label for="f-more"><span data-lang="lv">Sīkāk</span><span data-lang="ru" hidden>Подробнее</span></label>
+        <textarea id="f-more" data-ph-lv="Kādi ziedi, krāsas, daudzums, budžets…" data-ph-ru="Какие цветы, цвета, количество, бюджет…" placeholder="Kādi ziedi, krāsas, daudzums, budžets…"></textarea>
+      </div>
+      <div class="field row2">
+        <div>
+          <label for="f-name"><span data-lang="lv">Vārds</span><span data-lang="ru" hidden>Имя</span></label>
+          <input id="f-name" type="text" autocomplete="name">
+        </div>
+        <div>
+          <label for="f-tel"><span data-lang="lv">Tālrunis</span><span data-lang="ru" hidden>Телефон</span></label>
+          <input id="f-tel" type="tel" autocomplete="tel" placeholder="+371">
+        </div>
+      </div>
+      <p class="preview-lab"><span data-lang="lv">Vēstule veikalam</span><span data-lang="ru" hidden>Письмо магазину</span></p>
+      <div class="preview" id="preview" aria-live="polite"></div>
+      <div class="form-actions">
+        <a class="btn btn-y" id="send" href="mailto:cipruss.ziedi@gmail.com"><span data-lang="lv">Sūtīt e-pastu</span><span data-lang="ru" hidden>Отправить письмо</span></a>
+        <a class="btn btn-o" href="tel:+37167543897"><span><span data-lang="lv">Zvanīt</span><span data-lang="ru" hidden>Звонить</span> 67 543 897</span></a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- visit -->
+<section class="visit" id="kontakti">
+  <div class="wrap visit-grid">
+    <div class="visit-info">
+      <p class="kicker"><span data-lang="lv">Kā atrast</span><span data-lang="ru" hidden>Как найти</span></p>
+      <h2><span data-lang="lv">Kuršu iela 3</span><span data-lang="ru" hidden>Улица Куршу, 3</span></h2>
+      <p class="addr-sub"><span data-lang="lv">Teika, Rīga, LV-1006</span><span data-lang="ru" hidden>Тейка, Рига, LV-1006, Kuršu iela 3</span></p>
+      <p class="status js-status"><i class="dot"></i><span><span class="js-status-text"></span> <span class="where"></span></span></p>
+      <ul class="hours" id="hours">
+        <li data-days="1,2,3,4,5"><span><span data-lang="lv">Pirmdiena–piektdiena</span><span data-lang="ru" hidden>Понедельник–пятница</span></span><span>8:00–18:00</span></li>
+        <li data-days="6"><span><span data-lang="lv">Sestdiena</span><span data-lang="ru" hidden>Суббота</span></span><span>8:00–17:00</span></li>
+        <li data-days="0"><span><span data-lang="lv">Svētdiena</span><span data-lang="ru" hidden>Воскресенье</span></span><span><span data-lang="lv">slēgts</span><span data-lang="ru" hidden>закрыто</span></span></li>
+      </ul>
+      <ul class="facts">
+        <li><span data-lang="lv">Bezmaksas stāvvieta pie pašām durvīm</span><span data-lang="ru" hidden>Бесплатная парковка прямо у дверей</span></li>
+        <li><span data-lang="lv">Maksāt var ar karti vai skaidrā naudā</span><span data-lang="ru" hidden>Оплата картой или наличными</span></li>
+      </ul>
+      <div class="contacts">
+        <a class="main" href="tel:+37167543897">67 543 897</a><br>
+        <a href="tel:+37128155232">28 155 232</a>, <a href="tel:+37129619946">29 619 946</a><br>
+        <a href="mailto:cipruss.ziedi@gmail.com">cipruss.ziedi@gmail.com</a>
+      </div>
+      <div class="visit-actions">
+        <a class="btn btn-k" href="https://maps.google.com/?cid=5606877694466718257" target="_blank" rel="noopener"><span data-lang="lv">Maršruts</span><span data-lang="ru" hidden>Маршрут</span></a>
+        <a class="btn btn-o" href="https://www.facebook.com/ciprussziedi/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <figure class="visit-photo">
+      <img src="img/zale.jpg" width="1125" height="1125" loading="lazy" alt="Cipruss zāle: podu augi, anturijs, kalanhojas rozā papīrā, koka plaukti">
+      <figcaption><span data-lang="lv">Zāle Kuršu ielā. Foto: Artis Ozoliņš</span><span data-lang="ru" hidden>Зал на улице Куршу. Фото: Artis Ozoliņš</span></figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="fbrand">Cipruss</p>
+      <p>SIA „Cipruss”, Kuršu iela 3, Rīga</p>
+    </div>
+    <div>
+      <p><span data-lang="lv">Šī lapa ir dizaina priekšlikums, ko sagatavojis Nikita; tā nav Cipruss oficiālā mājaslapa. Fotogrāfijas — Cipruss ziedi un augi (Google Maps), zāles foto — Artis Ozoliņš (Google Maps). Atsauksmes — no Google, citētas bez labojumiem.</span><span data-lang="ru" hidden>Эта страница — дизайн-предложение, подготовленное Никитой; это не официальный сайт Cipruss. Фотографии — Cipruss ziedi un augi (Google Maps), фото зала — Artis Ozoliņš (Google Maps). Отзывы — из Google, переводы наши.</span></p>
+      <p>Nikita: <a href="mailto:ngoloveckis@gmail.com">ngoloveckis@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="bar" aria-label="Ātrās darbības">
+  <a class="btn btn-y" href="tel:+37167543897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><span data-lang="lv">Zvanīt</span><span data-lang="ru" hidden>Звонить</span> 67 543 897</span></a>
+  <a class="btn btn-o" href="#pasutit"><span data-lang="lv">Pasūtīt</span><span data-lang="ru" hidden>Заказать</span></a>
+</div>
+
+<script>
+(function(){
+  var LANGS=['lv','ru'], lang='lv';
+  var HOURS={0:null,1:[8,18],2:[8,18],3:[8,18],4:[8,18],5:[8,18],6:[8,17]};
+  var T={
+    lv:{open:function(c){return 'Atvērts līdz '+c+':00'},
+        before:function(o){return 'Šodien atveram '+o+':00'},
+        next:function(d,o){return 'Slēgts, atveram '+d+' '+o+':00'},
+        tomorrow:'rīt', days:['svētdien','pirmdien','otrdien','trešdien','ceturtdien','piektdien','sestdien'],
+        wd:['svētdiena','pirmdiena','otrdiena','trešdiena','ceturtdiena','piektdiena','sestdiena'],
+        hello:'Labdien!', want:'Pasūtījums: ', when:'Kad: ', more:'Sīkāk: ', thanks:'Paldies!', subj:'Pasūtījums', empty:'…', where:', Kuršu iela\u00a03'},
+    ru:{open:function(c){return 'Открыто до '+c+':00'},
+        before:function(o){return 'Откроемся сегодня в '+o+':00'},
+        next:function(d,o){return 'Закрыто, откроемся '+d+' в '+o+':00'},
+        tomorrow:'завтра', days:['в воскресенье','в понедельник','во вторник','в среду','в четверг','в пятницу','в субботу'],
+        wd:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+        hello:'Здравствуйте!', want:'Хочу заказать: ', when:'Когда: ', more:'Подробнее: ', thanks:'Спасибо!', subj:'Заказ', empty:'…', where:', Kuršu iela\u00a03'}
+  };
+
+  function rigaNow(){
+    try{
+      var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Riga',weekday:'short',hour:'2-digit',minute:'2-digit',hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+      var o={};parts.forEach(function(p){o[p.type]=p.value});
+      var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+      return {d:map[o.weekday],h:parseInt(o.hour,10)%24,m:parseInt(o.minute,10),iso:o.year+'-'+o.month+'-'+o.day};
+    }catch(e){var n=new Date();return {d:n.getDay(),h:n.getHours(),m:n.getMinutes(),iso:n.toISOString().slice(0,10)}}
+  }
+
+  function status(){
+    var n=rigaNow(), t=T[lang], today=HOURS[n.d], txt, open=false;
+    var mins=n.h*60+n.m;
+    if(today && mins>=today[0]*60 && mins<today[1]*60){txt=t.open(today[1]);open=true}
+    else if(today && mins<today[0]*60){txt=t.before(today[0])}
+    else{
+      for(var i=1;i<=7;i++){var d=(n.d+i)%7;if(HOURS[d]){txt=t.next(i===1?t.tomorrow:t.days[d],HOURS[d][0]);break}}
+    }
+    document.querySelectorAll('.js-status').forEach(function(el){
+      el.classList.toggle('is-open',open);el.classList.toggle('is-shut',!open);
+      el.querySelector('.js-status-text').textContent=txt;
+      var w=el.querySelector('.where'); if(w) w.textContent=t.where;
+    });
+    document.querySelectorAll('#hours li').forEach(function(li){
+      li.classList.toggle('today',li.getAttribute('data-days').split(',').indexOf(String(n.d))>-1);
+    });
+  }
+
+  // order composer
+  var chips=[].slice.call(document.querySelectorAll('#chips .chip'));
+  var fDate=document.getElementById('f-date'), fMore=document.getElementById('f-more'), fName=document.getElementById('f-name'), fTel=document.getElementById('f-tel');
+  var preview=document.getElementById('preview'), send=document.getElementById('send'), hint=document.getElementById('sun-hint');
+  try{fDate.min=rigaNow().iso}catch(e){}
+  chips.forEach(function(c){c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true');compose()})});
+  [fDate,fMore,fName,fTel].forEach(function(el){el.addEventListener('input',compose)});
+
+  function fmtDate(v){
+    if(!v) return '';
+    var p=v.split('-'); if(p.length!==3) return v;
+    var d=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));
+    return p[2]+'.'+p[1]+'.'+p[0]+' ('+T[lang].wd[d.getUTCDay()]+')';
+  }
+  function compose(){
+    var t=T[lang];
+    var items=chips.filter(function(c){return c.getAttribute('aria-pressed')==='true'}).map(function(c){return c.getAttribute('data-'+lang)});
+    var lines=[t.hello, t.want+(items.length?items.join(', '):t.empty)];
+    var dv=fDate.value;
+    if(dv){lines.push(t.when+fmtDate(dv))}
+    var sun=false; if(dv){var p=dv.split('-');sun=new Date(Date.UTC(+p[0],+p[1]-1,+p[2])).getUTCDay()===0}
+    hint.hidden=!sun;
+    if(fMore.value.trim()) lines.push(t.more+fMore.value.trim());
+    var who=[fName.value.trim(),fTel.value.trim()].filter(Boolean).join(', ');
+    lines.push(''); if(who) lines.push(who); lines.push(t.thanks);
+    var body=lines.join('\n');
+    preview.textContent=body;
+    send.href='mailto:cipruss.ziedi@gmail.com?subject='+encodeURIComponent(t.subj)+'&body='+encodeURIComponent(body);
+  }
+
+  function setLang(l,save){
+    if(LANGS.indexOf(l)<0) l='lv';
+    lang=l; document.documentElement.lang=l;
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.hidden=el.getAttribute('data-lang')!==l});
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-set-lang')===l?'true':'false')});
+    document.querySelectorAll('[data-ph-'+l+']').forEach(function(el){el.placeholder=el.getAttribute('data-ph-'+l)});
+    if(save){try{localStorage.setItem('cipruss-lang',l)}catch(e){}}
+    status(); compose();
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-set-lang'),true)})});
+
+  var start='lv', q=null;
+  try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+  if(q && LANGS.indexOf(q)>-1){start=q}
+  else{try{var s=localStorage.getItem('cipruss-lang');if(LANGS.indexOf(s)>-1)start=s}catch(e){}}
+  setLang(start,false);
+  setInterval(status,60000);
+})();
+</script>
+</body>
+</html>
